@@ -74,6 +74,25 @@ func factorialLoop(value int) int {
 	}
 }
 
+// Defer, Panic & Recover
+func endApp() {
+	fmt.Println("Aplikasi selesai")
+	message := recover()
+	if message != nil {
+		fmt.Println("Error message: ", message)
+	}
+}
+
+func runApp(error bool) {
+	defer endApp()
+
+	if error {
+		panic("ERROR!!")
+	}
+
+	fmt.Println("Aplikasi berjalan")
+}
+
 func main() {
 	// 1️⃣ Function void
 	fmt.Println("=== sayHello ===")
@@ -132,4 +151,8 @@ func main() {
 	// 9️⃣ Recursive function
 	fmt.Println("\n=== Recursive function ===")
 	fmt.Println(factorialLoop(2))
+
+	// 10️⃣ Defer, Panic & Recover
+	fmt.Println("\n=== Defer, Panic & Recover ===")
+	runApp(false)
 }
